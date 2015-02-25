@@ -17,5 +17,9 @@
   "dependencies": {
     "gulp": "^3.8.11",
     "gulp-less": "^3.0.1"
+  },
+  "devDependencies": {
+    "gulp-concat": "^2.5.2",
+    "main-bower-files": "^2.5.0"
   }
 }
