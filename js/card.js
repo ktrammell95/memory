@@ -3,6 +3,7 @@ var Card = (function() {
   function Card(face) {
     this.face = face;
     this.$el = this.generateEl(face);
+    this._isMatched = false;
   }
 
   Card.prototype = {
@@ -13,7 +14,7 @@ var Card = (function() {
       //creating empty div within jQuery
       $el = $("<div />");
       //setting data to face
-      $el.data("face", face);
+      $el.data("card", this);
       //adding classes "card" & "back"
       $el.addClass("card back");
       //setting the text
@@ -33,6 +34,7 @@ var Card = (function() {
 
     matched: function() {
       this.$el.addClass("matched");
+      this._isMatched = true;
     },
 
     //var card1 = new Card("A");

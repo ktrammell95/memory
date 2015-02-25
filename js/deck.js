@@ -1,6 +1,8 @@
 var Deck = (function() {
   function Deck() {
     this.cards = this.makeCards();
+    this.shuffle();
+    this.$el = $("<div class='deck'></div>");
   }
 
   Deck.prototype = {
@@ -24,10 +26,42 @@ var Deck = (function() {
        });
 
        return cards;
-    }
+    },
 
+    shuffle: function() {
+      this.cards = _.shuffle(this.cards);
+    },
+
+    matchesFound: function() {
+      var cardsThatAreMatched = _.filter(this.cards, function(card){
+        return card.isMatched;
+      });
+
+      var matchedCardsCount = cardsThatAreMatched.length;
+      var matchesCount = matchedCardsCount / 2;
+
+      return matchesCount;
+
+      // return _.filter(this.cards, function(card){
+      //   return card.isMatched;
+      // }).length;
+    },
+
+    matchesRemaining: function() {
+      return 26 - this.matchesFound;
+    },
+
+    render: function() {
+      var $el = this.$el;
+
+      $el.empty();
+
+      _.each(this.cards, function(card) {
+        $el.append(card.render());
+   });
+      return $el;
   }
-
+}
   return Deck;
 
 
