@@ -7,7 +7,7 @@ var Card = (function() {
 
   Card.prototype = {
 
-    generateEl: function () {
+    generateEl: function (face) {
       //declaring variable
       var $el;
       //creating empty div within jQuery
